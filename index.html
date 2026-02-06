@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGC That Converts | AI-Assisted Video Content</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #ffffff;
+            --bg-alt: #f9fafb;
+            --border: #e5e7eb;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 120px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero .subhead {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        section.alt {
+            background: var(--bg-alt);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+        
+        /* Problem */
+        .problem-content {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        .problem-content p {
+            font-size: 1.125rem;
+            margin-bottom: 24px;
+        }
+        
+        .problem-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+        
+        .problem-list li {
+            padding: 12px 0;
+            padding-left: 28px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .problem-list li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-weight: 600;
+        }
+        
+        .transition-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Solution */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .pillar {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        
+        .pillar-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        
+        .pillar h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+        
+        .pillar p {
+            color: var(--text-light);
+        }
+        
+        /* How It Works */
+        .steps {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .step-num {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .step-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+        
+        .step-content p {
+            color: var(--text-light);
+        }
+        
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .portfolio-item {
+            aspect-ratio: 9/16;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border: 2px dashed var(--border);
+        }
+        
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .price-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .price-card.featured {
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+        
+        .price-card.featured::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .price-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .price-videos {
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+        
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .price-per {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        
+        .price-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        
+        .price-features li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-light);
+        }
+        
+        .price-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        /* FAQ */
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+        }
+        
+        .faq-item:first-child {
+            border-top: 1px solid var(--border);
+        }
+        
+        .faq-q {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        
+        .faq-a {
+            color: var(--text-light);
+        }
+        
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .cta p {
+            color: var(--text-light);
+            font-size: 1.125rem;
+            margin-bottom: 32px;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            max-width: 500px;
+            margin: 48px auto 0;
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0 60px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-num {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>UGC That Converts.<br>Without the Creator Drama.</h1>
+            <p class="subhead">AI-assisted video content for DTC brands who need quality at scale.</p>
+            <a href="#contact" class="btn">Get Started →</a>
+        </div>
+    </section>
+    
+    <!-- Problem -->
+    <section class="alt">
+        <div class="container">
+            <h2 class="section-title">The UGC Problem</h2>
+            <div class="problem-content">
+                <p>You know UGC works. Your ads perform 4x better with authentic-looking content.</p>
+                <p>But scaling it is painful:</p>
+                <ul class="problem-list">
+                    <li>Chasing creators who ghost you</li>
+                    <li>Inconsistent quality across videos</li>
+                    <li>Slow turnarounds when you need to test fast</li>
+                    <li>Costs that add up quickly</li>
+                </ul>
+                <p class="transition-text">There's a better way.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Solution -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">AI-Assisted UGC</h2>
+            <p class="section-subtitle">Same authentic, scroll-stopping content. Faster. More affordable. Zero drama.</p>
+            <div class="pillars">
+                <div class="pillar">
+                    <div class="pillar-icon">⚡</div>
+                    <h3>Fast</h3>
+                    <p>48-72 hour turnaround. Test ideas while they're still relevant.</p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">💰</div>
+                    <h3>Affordable</h3>
+                    <p>$140-200 per video. Full commercial rights included.</p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">🎯</div>
+                    <h3>Consistent</h3>
+                    <p>Multiple variations for A/B testing. Same quality, every time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section class="alt">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h3>You share your product</h3>
+                        <p>Send your hero product, brand guidelines, and any creative direction.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h3>I create the content</h3>
+                        <p>Using AI tools + human creative direction, I produce authentic UGC-style videos optimized for your platform.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h3>You scale your ads</h3>
+                        <p>Full rights to use across paid social, organic, email—wherever converts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Recent Work</h2>
+            <p class="section-subtitle">Sample UGC-style videos for leading skincare brands.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">[Video 1 - Topicals Faded]</div>
+                <div class="portfolio-item">[Video 2 - Starface Pimple Patches]</div>
+                <div class="portfolio-item">[Video 3 - Naturium Niacinamide]</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing -->
+    <section class="alt">
+        <div class="container">
+            <h2 class="section-title">Simple Pricing</h2>
+            <p class="section-subtitle">No hidden fees. Full commercial rights included.</p>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-name">Starter</div>
+                    <div class="price-videos">1 video</div>
+                    <div class="price-amount">$200</div>
+                    <div class="price-per">$200 per video</div>
+                    <ul class="price-features">
+                        <li>Full commercial rights</li>
+                        <li>2 revision rounds</li>
+                        <li>Raw files included</li>
+                        <li>48-72 hour delivery</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Get Started</a>
+                </div>
+                <div class="price-card featured">
+                    <div class="price-name">Growth</div>
+                    <div class="price-videos">5 videos</div>
+                    <div class="price-amount">$800</div>
+                    <div class="price-per">$160 per video</div>
+                    <ul class="price-features">
+                        <li>Full commercial rights</li>
+                        <li>2 revision rounds</li>
+                        <li>Raw files included</li>
+                        <li>48-72 hour delivery</li>
+                    </ul>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+                <div class="price-card">
+                    <div class="price-name">Scale</div>
+                    <div class="price-videos">10 videos</div>
+                    <div class="price-amount">$1,400</div>
+                    <div class="price-per">$140 per video</div>
+                    <ul class="price-features">
+                        <li>Full commercial rights</li>
+                        <li>2 revision rounds</li>
+                        <li>Raw files included</li>
+                        <li>48-72 hour delivery</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">FAQ</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-q">What makes this different from regular UGC?</div>
+                    <div class="faq-a">I use AI tools to speed up production while keeping the authentic feel that makes UGC work. You get the same scroll-stopping content, faster and more affordable.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Will it look "AI-generated"?</div>
+                    <div class="faq-a">No. The goal is content that performs, not content that shows off tech. Most brands can't tell the difference in their metrics—which is the point.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What rights do I get?</div>
+                    <div class="faq-a">Full commercial rights. Use it for paid ads, organic social, email, website—wherever converts.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What's your turnaround time?</div>
+                    <div class="faq-a">Standard is 48-72 hours. Rush delivery available for time-sensitive campaigns.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Do you work with brands outside skincare?</div>
+                    <div class="faq-a">Yes—I specialize in skincare but work with any DTC brand where visual content drives conversions.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="cta alt" id="contact">
+        <div class="container">
+            <h2>Ready to Scale Your Content?</h2>
+            <p>Let's start with one video. If it doesn't perform, you pay nothing.</p>
+            
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="brand">Brand / Company</label>
+                    <input type="text" id="brand" name="brand" required>
+                </div>
+                <div class="form-group">
+                    <label for="product">What product would you like a video for?</label>
+                    <textarea id="product" name="product" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width:100%;border:none;cursor:pointer;">Get Started →</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 | <a href="mailto:contact@example.com">contact@example.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>
